@@ -4,7 +4,6 @@ module.exports = {
     async login(req, res){
         try {
             const { email, password } = req.body
-            console.log(password)
             const user = await User.validarCredenciais(email, password)
             if (!user) {
                 return res.status(401).send({error: 'Erro no login, as credenciais estão erradas.'})
