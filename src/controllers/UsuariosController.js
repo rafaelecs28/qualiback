@@ -53,6 +53,14 @@ module.exports ={
         }
 
     },
+    async getRole(req, res){
+        try{
+            res.send(req.user.role)
+        }catch(error){
+            res.status(400).send(error)
+        }
+    
+    },
     async usuarios(req, res){
         try {
             var usuarios = ''
