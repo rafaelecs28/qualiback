@@ -58,9 +58,9 @@ const UsuarioSchema = mongoose.Schema({
     },
     endereco: String,
     cep:{
-        type: Number,
-        min: 11111111,
-        max: 99999999
+        type: String,
+        minlength: 8,
+        maxlength: 8
     },
     uf: {
         type: String,
