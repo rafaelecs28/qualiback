@@ -53,5 +53,37 @@ module.exports ={
         }
 
     },
+    async usuarios(req, res){
+        try {
+            if(req.params.role === 'gerente'){
+                const usuarios = await User.find({role: { "$ne": 'admin' } }).sort('nome');  
+            }
+            else if(req.params.role  === 'admin'){
+                const usuarios = await User.find({}).sort('nome');
+            }
+            else{
+                const usuarios = await User.find({role: 'usuario' }).sort('nome');
+            }
+            //const usuarios = await User.find({role: { "$ne": 'admin' } }).sort('nome');
+            let lista_usuarios = [];
+            for(var x in usuarios){
+                lista_usuarios.push({
+                    cpf: usuarios[x]['cpf'],
+                    nome: usuarios[x]['nome'],
+                    email: usuarios[x]['email'],
+                    telefone: usuarios[x]['telefone'],
+                    endereco: usuarios[x]['endereco'],
+                    uf: usuarios[x]['uf'],
+                    role: usuarios[x]['role'],
+                    sexo: usuarios[x]['sexo'],
+                    cep: usuarios[x]['cep'],
+                    perfil: usuarios[x]['perfil'],
+                })
+            }
+            return res.json(lista_usuarios);
+        } catch (error) {
+            res.status(500).send(error)
+        }
+    }
 
 }
