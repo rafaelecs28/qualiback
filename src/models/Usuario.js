@@ -22,9 +22,9 @@ Criação do Schema da tabela usuario no mongoose (MongoDB)
 */
 const UsuarioSchema = mongoose.Schema({
     cpf: {
-        type: Number,
-        min: 11111111111,
-        max: 99999999999,
+        type: String,
+        minlength: 11,
+        maxlength: 11,
         required: true,
         unique: true,
     },
@@ -52,9 +52,9 @@ const UsuarioSchema = mongoose.Schema({
         minLength: 7
     },
     telefone: {
-        type: Number,
-        min: 1111111111,
-        max: 9999999999
+        type: String,
+        minlength: 10,
+        maxlength: 10
     },
     endereco: String,
     cep:{
