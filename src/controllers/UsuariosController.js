@@ -55,14 +55,14 @@ module.exports ={
     },
     async usuarios(req, res){
         try {
-            var usuarios = '';
+            var usuarios = ''
             if(req.params.role === 'gerente'){
                 usuarios = await User.find({role: { "$ne": 'admin' } }).sort('nome');  
             }
-            else if(req.params.role  === 'admin'){
+            if(req.params.role  === 'admin'){
                 usuarios = await User.find({}).sort('nome');
             }
-            else{
+            if(req.params.role  === 'usuario'){
                 usuarios = await User.find({role: 'usuario' }).sort('nome');
             }
             //const usuarios = await User.find({role: { "$ne": 'admin' } }).sort('nome');
@@ -85,6 +85,6 @@ module.exports ={
         } catch (error) {
             res.status(500).send(error)
         }
-    }
+    },
 
 }
