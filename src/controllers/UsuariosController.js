@@ -14,9 +14,7 @@ module.exports ={
     
     async index(req, res){
         try {
-
-            const usuarios = await User.find({role: 'usuario}).sort('nome');
-
+            const usuarios = await User.find({role: 'usuario' }).sort('nome');
             let lista_usuarios = [];
             for(var x in usuarios){
                 lista_usuarios.push({
