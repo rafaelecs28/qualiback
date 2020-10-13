@@ -25,5 +25,6 @@ router.put('/users/update', auth, UserController.updateUser);
 
 router.delete('/users/delete/:cpf', auth, UserController.deleteUser);
 
+router.get('/usuarios/:role', auth, UserController.usuarios);
 
 module.exports = router
